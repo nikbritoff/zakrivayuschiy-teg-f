@@ -4,3 +4,63 @@
 ✦ theme-light — класс светлой темы
 ✦ не забудьте описать стили для изменения темы через медизапрос пользовательских предпочтений
 */
+
+:root.theme-light {
+  --text-color: var(--color-black, #000000);
+  --page-font-weight: 400;
+  --page-bg-color: var(--color-white, #ffffff);
+  --page-bg-image: repeating-linear-gradient(
+      to left,
+      #d3d3d3 0 2px,
+      #d3d3d300 2px 4px
+    ),
+    repeating-linear-gradient(to bottom, #d3d3d3 0 2px, #d3d3d300 2px 4px),
+    linear-gradient(to bottom, #e7e7e7 0.01%, #1a1a1a);
+  --btn-text-color: var(--color-white);
+}
+
+:root.theme-dark {
+  --text-color: var(--color-green, #00cc14);
+  --page-font-weight: 465;
+  --page-bg-color: var(--color-black, #000000);
+  --page-bg-image: repeating-linear-gradient(
+      to left,
+      #000000 0 2px,
+      #00000000 2px 4px
+    ),
+    repeating-linear-gradient(to bottom, #000000 0 2px, #00000000 2px 4px),
+    linear-gradient(to bottom, #007f0c, #004306);
+  --btn-text-color: var(--color-green);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --text-color: var(--color-black, #000000);
+    --page-font-weight: 400;
+    --page-bg-color: var(--color-white, #ffffff);
+    --page-bg-image: repeating-linear-gradient(
+        to left,
+        #d3d3d3 0 2px,
+        #d3d3d300 2px 4px
+      ),
+      repeating-linear-gradient(to bottom, #d3d3d3 0 2px, #d3d3d300 2px 4px),
+      linear-gradient(to bottom, #e7e7e7 0.01%, #1a1a1a);
+    --btn-text-color: var(--color-white);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: var(--color-green, #00cc14);
+    --page-font-weight: 465;
+    --page-bg-color: var(--color-black, #000000);
+    --page-bg-image: repeating-linear-gradient(
+        to left,
+        #000000 0 2px,
+        #00000000 2px 4px
+      ),
+      repeating-linear-gradient(to bottom, #000000 0 2px, #00000000 2px 4px),
+      linear-gradient(to bottom, #007f0c, #004306);
+    --btn-text-color: var(--color-green);
+  }
+}

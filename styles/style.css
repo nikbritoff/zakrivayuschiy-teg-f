@@ -17,4 +17,312 @@
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  font-family: var(--page-font-family, "Inter", sans-serif);
+  color: var(--text-color, #000000);
+  background-color: var(--page-bg-color, #ffffff);
+  background-image: var(--page-bg-image, none);
+  background-size: cover;
+  background-attachment: fixed;
+  padding-block-start: 100px;
+}
+
+.header {
+  display: grid;
+  justify-items: center;
+  justify-content: center;
+  font-family: var(--page-font-family--secondary, "PressStart2P", fantasy);
+  line-height: normal;
+  text-transform: uppercase;
+  margin-block-end: 100px;
+}
+
+.header__title {
+  font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
+  margin-block-start: clamp(7.5rem, 7.1479rem + 1.5023vw, 8.5rem);
+  margin-block-end: 20px;
+}
+
+.header__description {
+  font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
+}
+
+.header__theme-menu {
+  margin-block: 25px;
+}
+
+.theme-menu__list {
+  display: grid;
+  gap: 8px;
+}
+
+.theme-menu__button {
+  position: relative;
+  border: none;
+  font-size: 14px;
+  text-transform: uppercase;
+  background: transparent;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+  appearance: none;
+  padding-inline-start: 26px;
+}
+
+.theme-menu__button:not(:disabled)::after {
+  content: "";
+  display: block;
+  background: currentColor;
+  transition: transform 0.3s ease;
+  transform: scaleX(0);
+  transform-origin: left;
+  inline-size: 100%;
+  block-size: 2px;
+}
+
+.theme-menu__button:hover {
+  opacity: 0.6;
+}
+
+.theme-menu__button:focus {
+  outline: none;
+  opacity: 0.6;
+}
+
+.theme-menu__button:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.theme-menu__button:disabled {
+  opacity: 0.6;
+  cursor: default;
+  pointer-events: none;
+}
+
+.theme-menu__button:disabled::before {
+  content: "▶";
+  position: absolute;
+  animation: pointer 0.5s ease-in-out infinite alternate;
+  inset-inline-start: 0;
+}
+
+.wrapper {
+  margin-inline: auto;
+  border: 2px solid var(--text-color, #000000);
+  background: var(--page-bg-color, #ffffff);
+  max-inline-size: 696px;
+}
+
+.content {
+  display: grid;
+  justify-items: center;
+  gap: 57px;
+  padding-block-end: 105px;
+}
+
+.cards-list {
+  display: grid;
+  gap: 52px;
+}
+
+.card__header {
+  border-block-end: 2px solid var(--text-color, #000000);
+  padding: 4px 10px;
+}
+
+.card__title {
+  font-size: 18px;
+  line-height: normal;
+  font-variation-settings: "wght" var(--title-font-weight, 700);
+}
+
+.card__image-container {
+  position: relative;
+  border-block-end: 2px solid var(--text-color, #000000);
+}
+
+.card__image {
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  inline-size: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+.card__image-tag {
+  position: absolute;
+  z-index: 1;
+  opacity: 0.5;
+  color: var(--text-color, #000000);
+  font-family: var(--page-font-family--secondary, "PressStart2P", fantasy);
+  font-size: 14px;
+  line-height: normal;
+  text-transform: uppercase;
+  text-shadow: 0 0 1px var(--page-bg-color, #ffffff);
+  inset-inline-end: 13px;
+  inset-block-start: 24px;
+  mix-blend-mode: hard-light;
+}
+
+.card__content {
+  display: grid;
+  gap: 27px;
+  border-block-start: 2px solid var(--text-color, #000000);
+  padding: 25px 30px 0 25px;
+  font-size: 18px;
+  line-height: calc(21 / 18);
+}
+
+@media (width >=1140px) {
+  .card__content {
+    padding-top: 27px;
+  }
+}
+
+.card__footer {
+  display: flex;
+  justify-content: end;
+  align-items: stretch;
+  gap: 5px;
+  padding: 25px 25px 23px 25px;
+}
+
+.card__icon-button {
+  display: grid;
+  border: 2px solid transparent;
+  padding: 0;
+  background: transparent;
+  transition: border-color 0.3s ease;
+  cursor: pointer;
+  appearance: none;
+}
+
+.button {
+  position: relative;
+  z-index: 1;
+  border: 2px solid var(--text-color, #000000);
+  padding: 10px 36px;
+  font-family: var(--page-font-family--secondary, "PressStart2P", fantasy);
+  font-size: 14px;
+  text-transform: inherit;
+  background: var(--page-bg-color, #ffffff);
+  transition: box-shadow 0.3s ease;
+  cursor: pointer;
+  appearance: none;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:focus-visible {
+  box-shadow: 2px 2px 0px 0px var(--text-color, #000000);
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--text-color, #000000);
+  transition: transform 0.5s ease-in-out;
+  transform: scaleX(0);
+  transform-origin: left;
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.button:hover::before {
+  transform: scaleX(1);
+}
+
+.button__text,
+.button__icon {
+  color: var(--btn-text-color, #ffffff);
+  mix-blend-mode: difference;
+}
+
+.button__icon {
+  block-size: 22px;
+  inline-size: 22px;
+}
+
+.like-icon {
+  block-size: 36px;
+  inline-size: 39px;
+}
+
+.filter--black-white {
+  filter: grayscale(1);
+}
+
+.filter--sepia {
+  filter: sepia(1);
+}
+
+.filter--invert {
+  filter: invert(1);
+}
+
+.filter--combo {
+  filter: hue-rotate(-90deg) saturate(60%) brightness(150%);
+}
+
+.filter--contrast {
+  filter: contrast(0.5)
+}
+
+.filter--blur {
+  filter: blur(0.2em);
+}
+
+.filter--saturate {
+  filter: saturate(10%);
+}
+
+.modal {
+  border: 2px solid var(--text-color, #000000);
+  padding: 25px 30px;
+  color: var(--text-color, #000000);
+  font-family: var(--page-font-family-secondary, "PressStart2P", fantasy);
+  line-height: 1.5;
+  text-transform: uppercase;
+  background: var(--page-bg-color, #ffffff);
+  max-inline-size: 355px;
+}
+
+.modal[open] {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.modal::backdrop {
+  opacity: 0.75;
+  background: var(--color-black, #000000);
+}
+
+.modal__content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.modal__icon {
+  flex-shrink: 0;
+  inline-size: 39px;
+  block-size: 39px;
+}
+
+.modal__button {
+  inline-size: 100%;
+}
+
+@supports (
+  (-webkit-text-stroke: 1px var(--page-bg-color, #ffffff)) or
+    (text-stroke: 1px var(--page-bg-color, #ffffff))
+) {
+  .card__image-tag {
+    text-shadow: none;
+    -webkit-text-stroke: 1px var(--page-bg-color, #ffffff);
+    text-stroke: 1px var(--page-bg-color, #ffffff);
+  }
 }
